@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-pink-100">
+    
+<div class="flex flex-col items-center justify-center">
+<h2 class="text-lg">Hola Rosy</h2>
+<p>Quiero decirte que siento algo muy especial por ti, algo que no puedo describir con palabras. Eres una persona increíble, llena de luz y alegría. Me haces sentir vivo y feliz, y no puedo imaginar mi vida sin ti. Eres mi inspiración y mi motivación para ser una mejor persona. Te quiero mucho, Rosy, y espero que podamos compartir muchos momentos felices juntos.</p>
+<div style="max-width:200px;" class="tenor-gif-embed" data-postid="7310400222821099896" data-share-method="host" data-aspect-ratio="0.811245" data-width="100%"><a href="https://tenor.com/view/cat-scuba-cat-cat-dance-cat-meme-gif-7310400222821099896">Cat Scuba Cat Dance GIF</a>from <a href="https://tenor.com/search/cat+scuba-gifs">Cat Scuba GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+<p>Puedes escribirme tu respuesta abajo. Si no es ninguno no apretes ninguno y solo envia el mensaje en el cuadro de abajo </p>
+<button class="border border-blue-500 rounded-lg bg-pink-500 text-white p-2" onclick="location.href='Acepto.html'">Si</button>
+<button class="border border-black rounded-lg bg-black text-white p-2" onclick="location.href='Noacepto.html'">No</button>
+<input type="text" id="mensaje" class="border rounded-lg bg-gray-100 " placeholder="Escribe tu mensaje">
+<button class="border rounded-lg bg-blue-100 p-2" onclick="guardar()">
+  Enviar
+</button>
+</div>
+
+
+
+
+    <script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+
+import {
+  getFirestore,
+  addDoc,
+  collection
+}
+from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBoG-o0XjQMeQ4vemkNZF0VKJ6KuM2qk1g",
+  authDomain: "rosyyyy.firebaseapp.com",
+  projectId: "rosyyyy",
+  storageBucket: "rosyyyy.firebasestorage.app",
+  messagingSenderId: "730750517480",
+  appId: "1:730750517480:web:8fc91708735e44e8fac95d"
+};
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+window.guardar = async function(){
+
+   const texto =
+      document.getElementById("mensaje").value
+
+   await addDoc(collection(db, "index.mensajes"), {
+
+      mensaje: texto
+
+   })
+
+   alert("Mensaje guardado")
+
+}
+
+</script>
+</body>
+</html>

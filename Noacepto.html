@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body>
+    <h1 class="text-lg">Revisa hasta el final</h1>
+    <img src="gatito1.webp" alt="">
+    <img src="gatito2.webp" alt="">
+    <img src="gatito5.webp" alt="">
+    <img src="gatito8.webp" alt="">
+    <p class="text-lg">Yo no se que mas hacer para recuperarte. Ya no intentare nada mas</p>
+    <input type="text" id="mensaje" class="border rounded-lg bg-gray-100 " placeholder="Escribe tu mensaje">
+<button class="border rounded-lg bg-blue-100 p-2" onclick="guardar()">
+    
+  Enviar
+</button>
+<p>Solo dime que es lo que piensas en ese cuadro de arriba. Si lo leere</p>
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+
+import {
+  getFirestore,
+  addDoc,
+  collection
+}
+from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
+const firebaseConfig = {
+  apiKey: "AIzaSyBoG-o0XjQMeQ4vemkNZF0VKJ6KuM2qk1g",
+  authDomain: "rosyyyy.firebaseapp.com",
+  projectId: "rosyyyy",
+  storageBucket: "rosyyyy.firebasestorage.app",
+  messagingSenderId: "730750517480",
+  appId: "1:730750517480:web:8fc91708735e44e8fac95d"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.guardar = async function () {
+
+  const texto = document.getElementById("mensaje").value;
+
+  await addDoc(collection(db, "No_acepto"), {
+    mensaje: texto
+  });
+
+  alert("Enviado");
+
+};
+
+</script>
+</body>
+</html>
